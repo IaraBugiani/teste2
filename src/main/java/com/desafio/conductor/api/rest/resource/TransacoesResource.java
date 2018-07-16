@@ -28,14 +28,9 @@ public class TransacoesResource {
 	
 	private final Logger log = LoggerFactory.getLogger(TransacoesResource.class);
 	
-	@GetMapping ("/porperido/")
+	@GetMapping ("/porperiodo/")
 	public  ResponseEntity<List<Transacoes>> buscaTransacoesPorPeriodo (@RequestParam("dataInicio") @DateTimeFormat(iso=ISO.DATE) LocalDate dataInicio, @RequestParam("dataFim") @DateTimeFormat(iso=ISO.DATE) LocalDate dataFim) {
-		List<Transacoes> listaTransacoes = null;
-		try{
-			listaTransacoes = serviceImpl.listaTransacoesPorPeriodo(dataInicio, dataFim);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return new ResponseEntity<List<Transacoes>>(listaTransacoes, HttpStatus.OK);
+		log.debug("Get Request buscaTransacoesPorPeriodo: {} {}",dataInicio, dataFim);
+		return new ResponseEntity<List<Transacoes>>(serviceImpl.listaTransacoesPorPeriodo(dataInicio, dataFim), HttpStatus.OK);
 	}
 }

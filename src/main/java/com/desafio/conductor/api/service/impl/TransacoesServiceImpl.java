@@ -27,11 +27,13 @@ public class TransacoesServiceImpl implements TransacoesService {
 	@Transactional(readOnly = true)
 	public List<Transacoes> listaTransacoesPorPeriodo(LocalDate dataInicio, LocalDate dataFim) {
 		List<Transacoes> lista = repository.findByDataBetween(dataInicio, dataFim);
-		escreveArquivo(lista);
+		if(!lista.isEmpty()) {
+			escreveArquivo(lista);
+		}
 		return lista;
 	}
 	
-	private static void escreveArquivo(List<Transacoes> transacoes) {
+	private void escreveArquivo(List<Transacoes> transacoes) {
 		
 		File diretorio = new File("C:\\Teste_Iara");
 		diretorio.mkdirs();
