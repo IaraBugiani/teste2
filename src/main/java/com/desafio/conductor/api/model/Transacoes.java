@@ -1,5 +1,6 @@
 package com.desafio.conductor.api.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -10,10 +11,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="TB_TRANS")
-public class Transacoes {
+public class Transacoes implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4826515139768668045L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID_TRANSACAO",nullable=false)
@@ -22,7 +30,7 @@ public class Transacoes {
 	@Column(name="NM_CARTAO", length=16, nullable=false)
 	private Long cartao;
 	
-	@Column(name="VR_VALOR",precision=2, nullable=false)
+	@Column(name="VR_VALOR",nullable=false)
 	private BigDecimal valorTransacao;
 	
 	@Column(name="DT_DATA",nullable=false)
