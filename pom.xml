@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>desafioConductor-api</name>
-	<description>Desafio para processo seletivo</description>
+	<description>Desafio para processo seletivo Conductor Iara Francislene Bugiani</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
